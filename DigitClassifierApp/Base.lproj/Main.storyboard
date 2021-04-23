@@ -1,24 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DigitClassifierApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0d-b0-S3c" customClass="CanvasView" customModule="DigitClassifierApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="246" width="414" height="414"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Y0d-b0-S3c" secondAttribute="height" multiplier="1:1" id="M6Y-9m-b7C"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="164-w8-FHY">
+                                <rect key="frame" x="157" y="84" width="100" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.039060060010000001" blue="0.20556451270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Opm-jD-XGD"/>
+                                    <constraint firstAttribute="width" constant="100" id="lED-6A-aQe"/>
+                                </constraints>
+                                <state key="normal" title="Clear">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedClear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lgm-GZ-Sef"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vK3-Zz-UhX">
+                                <rect key="frame" x="309" y="84" width="100" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="bjX-bq-VgZ"/>
+                                    <constraint firstAttribute="width" constant="100" id="g1u-qq-N6B"/>
+                                </constraints>
+                                <state key="normal" title="Undo"/>
+                                <connections>
+                                    <action selector="pressedUndo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aYJ-ec-atO"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Y0d-b0-S3c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="G9k-U2-Qhl"/>
+                            <constraint firstItem="vK3-Zz-UhX" firstAttribute="leading" secondItem="164-w8-FHY" secondAttribute="trailing" constant="52" id="MI3-2y-agp"/>
+                            <constraint firstItem="164-w8-FHY" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bpA-y8-02F"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Y0d-b0-S3c" secondAttribute="trailing" id="lPc-vD-1Lh"/>
+                            <constraint firstItem="Y0d-b0-S3c" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="ruE-MS-KBH"/>
+                            <constraint firstItem="Y0d-b0-S3c" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="tof-dh-cEW"/>
+                            <constraint firstItem="164-w8-FHY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="xUn-GX-71X"/>
+                            <constraint firstItem="vK3-Zz-UhX" firstAttribute="centerY" secondItem="164-w8-FHY" secondAttribute="centerY" id="yZg-Eb-3Y1"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="canvasView" destination="Y0d-b0-S3c" id="OWF-5Y-esX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-197" y="89"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
