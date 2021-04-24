@@ -18,7 +18,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0d-b0-S3c" customClass="CanvasView" customModule="DigitClassifierApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="246" width="414" height="414"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Y0d-b0-S3c" secondAttribute="height" multiplier="1:1" id="M6Y-9m-b7C"/>
                                 </constraints>
@@ -38,26 +38,57 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vK3-Zz-UhX">
-                                <rect key="frame" x="309" y="84" width="100" height="50"/>
+                                <rect key="frame" x="294" y="84" width="100" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="bjX-bq-VgZ"/>
                                     <constraint firstAttribute="width" constant="100" id="g1u-qq-N6B"/>
                                 </constraints>
-                                <state key="normal" title="Undo"/>
+                                <state key="normal" title="Undo">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="pressedUndo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aYJ-ec-atO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pwA-jg-0vU">
+                                <rect key="frame" x="20" y="84" width="100" height="50"/>
+                                <color key="backgroundColor" red="0.43851754069999999" green="0.73283094169999996" blue="0.47077196840000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Wy8-Y1-asb"/>
+                                    <constraint firstAttribute="width" constant="100" id="wbb-cj-zAG"/>
+                                </constraints>
+                                <color key="tintColor" red="0.43851754069999999" green="0.73283094169999996" blue="0.47077196840000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Detect">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedSave:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yQZ-Hp-GfW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzC-L7-Dqi">
+                                <rect key="frame" x="107" y="712" width="200" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="55b-1e-yA8"/>
+                                    <constraint firstAttribute="width" constant="200" id="ixo-TC-xBU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
                         <constraints>
+                            <constraint firstItem="pwA-jg-0vU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="9lg-y1-pc0"/>
                             <constraint firstItem="Y0d-b0-S3c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="G9k-U2-Qhl"/>
-                            <constraint firstItem="vK3-Zz-UhX" firstAttribute="leading" secondItem="164-w8-FHY" secondAttribute="trailing" constant="52" id="MI3-2y-agp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vK3-Zz-UhX" secondAttribute="trailing" constant="20" id="PUw-h8-4i6"/>
                             <constraint firstItem="164-w8-FHY" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bpA-y8-02F"/>
+                            <constraint firstItem="gzC-L7-Dqi" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gWK-k7-L2L"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Y0d-b0-S3c" secondAttribute="trailing" id="lPc-vD-1Lh"/>
+                            <constraint firstItem="pwA-jg-0vU" firstAttribute="centerY" secondItem="164-w8-FHY" secondAttribute="centerY" id="nDG-sh-d3n"/>
                             <constraint firstItem="Y0d-b0-S3c" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="ruE-MS-KBH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gzC-L7-Dqi" secondAttribute="bottom" constant="50" id="sbN-yZ-j4y"/>
                             <constraint firstItem="Y0d-b0-S3c" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="tof-dh-cEW"/>
                             <constraint firstItem="164-w8-FHY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="xUn-GX-71X"/>
                             <constraint firstItem="vK3-Zz-UhX" firstAttribute="centerY" secondItem="164-w8-FHY" secondAttribute="centerY" id="yZg-Eb-3Y1"/>
@@ -65,6 +96,7 @@
                     </view>
                     <connections>
                         <outlet property="canvasView" destination="Y0d-b0-S3c" id="OWF-5Y-esX"/>
+                        <outlet property="detectResult" destination="gzC-L7-Dqi" id="Zff-D2-goI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -73,8 +105,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

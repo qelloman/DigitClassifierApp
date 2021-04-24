@@ -22,8 +22,8 @@ struct TouchPointsAndColor {
 class CanvasView: UIView {
 
     var lines = [TouchPointsAndColor]()
-    var strokeWidth: CGFloat = 1.0
-    var strokeColor: UIColor = .black
+    var strokeWidth: CGFloat = 30.0
+    var strokeColor: UIColor = .white
     var strokeOpacity: CGFloat = 1.0
     
     override func draw(_ rect: CGRect) {
@@ -32,7 +32,6 @@ class CanvasView: UIView {
         guard let context = UIGraphicsGetCurrentContext() else {
             return
         }
-        print(self.frame.size.height)
         
         lines.forEach { (line) in
             for (i, p) in (line.points?.enumerated())! {
@@ -41,8 +40,8 @@ class CanvasView: UIView {
                 } else {
                     context.addLine(to: p)
                 }
-                context.setStrokeColor(line.color?.withAlphaComponent(line.opacity ?? 1.0).cgColor ?? UIColor.black.cgColor)
-                context.setLineWidth(line.width ?? 1.0)
+                context.setStrokeColor(line.color?.withAlphaComponent(line.opacity ?? 1.0).cgColor ?? UIColor.white.cgColor)
+                context.setLineWidth(line.width ?? 30.0)
             }
             context.setLineCap(.round)
             context.strokePath()
@@ -54,7 +53,7 @@ class CanvasView: UIView {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first?.location(in: nil) else {
+        guard let touch = touches.first?.location(in: self) else {
             return
         }
         
@@ -78,5 +77,21 @@ class CanvasView: UIView {
             setNeedsDisplay()
         }
     }
+    
+    func getUIImageFromDrawing() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
+        // Draw view in that context
+        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        // And finally, get image
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        if (image != nil) {
+            return image!
+        }
+        return UIImage()
+    }
+    
+    
 
 }
