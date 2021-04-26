@@ -3,10 +3,12 @@
 //  DigitClassifierApp
 //
 //  Created by Doyun Kim on 4/22/21.
-//
+// Reference: https://letcreateanapp.com/2020/12/29/swift-5-1-how-to-make-drawing-app/
 
 import UIKit
 
+// The original tutorial supports different color and storke size.
+// BUT I fix the color and stroke size to make the drawing look like the original MNIST dataset.
 struct TouchPointsAndColor {
     var color: UIColor?
     var width: CGFloat?
@@ -20,12 +22,20 @@ struct TouchPointsAndColor {
 }
 
 class CanvasView: UIView {
-
+    
+    // Drawing consists of a set of lines
+    // each line consists of a set of points made by touch move.
     var lines = [TouchPointsAndColor]()
+
+    // Default line properties.
+    // Remember the white color has higher value than black color.
+    // So we draw white lines in black background to match the number system with MNIST model.
     var strokeWidth: CGFloat = 30.0
     var strokeColor: UIColor = .white
     var strokeOpacity: CGFloat = 1.0
     
+    // UIView's method to redraw contents within its bound.
+    // Called by setNeedsDisplay() method below.
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
@@ -33,12 +43,13 @@ class CanvasView: UIView {
             return
         }
         
+        // draw each line using Core Graphic Context.
         lines.forEach { (line) in
-            for (i, p) in (line.points?.enumerated())! {
-                if i == 0 {
-                    context.move(to: p)
+            for (idx, point) in (line.points?.enumerated())! {
+                if idx == 0 {
+                    context.move(to: point)
                 } else {
-                    context.addLine(to: p)
+                    context.addLine(to: point)
                 }
                 context.setStrokeColor(line.color?.withAlphaComponent(line.opacity ?? 1.0).cgColor ?? UIColor.white.cgColor)
                 context.setLineWidth(line.width ?? 30.0)
@@ -48,15 +59,21 @@ class CanvasView: UIView {
         }
     }
     
+    
+    // MARK: override methods to handle touch (drawing)
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // Start to draw a new line
         lines.append(TouchPointsAndColor(color: UIColor(), points: [CGPoint]()))
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // NOTE: location must be set to self to get the coordinate of Canvas view.
         guard let touch = touches.first?.location(in: self) else {
             return
         }
         
+        // Take the last line we were drawing and append new touch points.
         guard var lastPoint = lines.popLast() else {return}
         lastPoint.points?.append(touch)
         lastPoint.color = strokeColor
@@ -66,17 +83,8 @@ class CanvasView: UIView {
         setNeedsDisplay()
     }
     
-    func clearCanvasView() {
-        lines.removeAll()
-        setNeedsDisplay()
-    }
-    
-    func undoDraw() {
-        if lines.count > 0 {
-            lines.removeLast()
-            setNeedsDisplay()
-        }
-    }
+
+    // MARK: the corressponding methods to buttons.
     
     func getUIImageFromDrawing() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
@@ -92,6 +100,16 @@ class CanvasView: UIView {
         return UIImage()
     }
     
+    func clearCanvasView() {
+        lines.removeAll()
+        setNeedsDisplay()
+    }
     
+    func undoDraw() {
+        if lines.count > 0 {
+            lines.removeLast()
+            setNeedsDisplay()
+        }
+    }
 
 }
