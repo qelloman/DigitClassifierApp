@@ -12,7 +12,7 @@ The **MNISTClassifier.mlmodel** file is missing in the project directory so you 
 ## Usage
 Draw the digit in Canvas view in the center and press the detect button.
 You can clean the drawing or undo the last stroke.  
-![Screen Recording 2021-04-25 at 11 50 52 PM](https://user-images.githubusercontent.com/15971069/116041030-95114280-a621-11eb-9fbd-52b1e79f56e6.gif)
+<img src='https://user-images.githubusercontent.com/15971069/116041030-95114280-a621-11eb-9fbd-52b1e79f56e6.gif' width="25%">
 
 ## Contributing
 Feel free to clone and modify it as you want!
